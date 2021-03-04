@@ -1,5 +1,8 @@
 package com.example.myapplication.payPage
 
+
+//유저id 통해 유저의 쿠폰 정보 불러오는 클래스
+//PayPage에서 사용
 class CouponData(val userId:Int) {
     var couponList = ArrayList<Coupon>()
 

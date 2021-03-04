@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bookTable.TableFloorFragment
-
+//쿠폰 정보 띄우는 다이얼로그
 class PayPageCouponDialog(context: Context, val couponData:CouponData, val sikdangId:Int): Dialog(context) {
     public var couponMatchList = ArrayList<Boolean>()//각 쿠폰이 이 식당에 사용되는 쿠폰인지 확인, 어댑터에서 확인한다
     public var couponMatchNumList = ArrayList<Int>()//매치되는 쿠폰이 각각 몇번째인지 저장하는 ArrayList
