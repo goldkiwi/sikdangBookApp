@@ -2,10 +2,7 @@ package com.example.myapplication.payPage
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.bookMenu.DataMenuToPay
@@ -79,6 +76,37 @@ class PayPage: AppCompatActivity() {
                 }
                 j++
             }
+        }
+
+
+        var payButton: Button = findViewById(R.id.payButton)
+        payButton.setOnClickListener {
+            var checkOne = -1
+            var i = 0
+            while(i<checkBoxAL.size){
+                if (checkBoxAL[i].isChecked == true){
+                    checkOne = i
+                }
+                i++
+            }
+            if (checkOne == -1){
+                val myToast = Toast.makeText(this, "결제방식을 선택해주십시오.", Toast.LENGTH_SHORT).show()
+            }
+            else if(checkOne == 0){
+                val myToast = Toast.makeText(this, "카카오페이", Toast.LENGTH_SHORT).show()
+                var kakaoPay = KakaoPay()
+                var isSuccess = kakaoPay.isPaySuccess()
+                if (isSuccess == true){
+                    //결제 성공
+                }else{
+                    //결제 실패
+                }
+            }else if(checkOne == 1){
+                val myToast = Toast.makeText(this, "어쩌고페이", Toast.LENGTH_SHORT).show()
+            }else{
+                val myToast = Toast.makeText(this, "결제방식선택오류", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 
