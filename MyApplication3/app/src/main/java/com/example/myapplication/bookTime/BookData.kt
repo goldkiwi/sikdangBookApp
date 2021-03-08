@@ -18,9 +18,10 @@ class BookData(sikdangId_:Int):Serializable {
 
     private var floor:Int =2//층수
     private var bookTime:String = ""
+    /*
     init{
         //Log.d("확인 BookData", sikdangId.toString()+"생성@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    }
+    }*/
 
 
 

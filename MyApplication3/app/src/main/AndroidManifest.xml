@@ -26,6 +26,7 @@
         <activity android:name=".sikdangChoicePage.SikdangChoice" />
         <activity android:name=".bookTime.BookTime" />
         <activity android:name=".payPage.PayPage" />
+        <activity android:name=".payComplete.PayCompletePage" />
 
     </application>
 

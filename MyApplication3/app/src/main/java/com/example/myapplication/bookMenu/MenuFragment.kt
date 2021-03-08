@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.EntClass.UserBookData
+import com.example.myapplication.EntClass.UserInfo
 import com.example.myapplication.R
 import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTime.BookData
@@ -158,18 +160,27 @@ class MenuFragment: Fragment() {
                 val myToast = Toast.makeText(context, "모든 테이블에 음식이 예약되어야 합니다.", Toast.LENGTH_SHORT).show()
             }
             else{//프래그먼트에서 호출했기 때문에 다음 액티비티 호출하면서 프래그럼틑 닫히고 그로인해 함수 종료에 문제 생김?
+                //이미 예약한게 있다면 예약이 안돼야 함
                 Log.d("확인 MenuFragment -> BookTime.callPayPage()", "호출")
                 //val intent= Intent(getActivity(), PayPage::class.java)
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //itemView.getContext().startActivity(intent);
                 //startActivity(intent)
+                var userInfo = UserInfo()
+                var userId = userInfo.userId
+                var userBookData = UserBookData(userId)
+                if (userBookData.getIsBooked() == true){//이 유저가 이미 예약을 한 경우
+                    val myToast = Toast.makeText(context, userBookData.getSikdangName()+"에 "+
+                            userBookData.getBookTime().substring(0, 2)+":"+userBookData.getBookTime().substring(2, 4)+"에 이미 예약 하셨습니다", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    var dataMenuToPay = DataMenuToPay()
+                    dataMenuToPay.setAL(tableNumAL, tableMenuList)
+                    var bookTimeActivity = activity as BookTime
+                    bookTimeActivity.callPayPage(price, dataMenuToPay)
+                    Log.d("확인 MenuFragment -> BookTime.callPayPage()", "복귀")
+                }
 
-
-                var dataMenuToPay = DataMenuToPay()
-                dataMenuToPay.setAL(tableNumAL, tableMenuList)
-                var bookTimeActivity = activity as BookTime
-                bookTimeActivity.callPayPage(price, dataMenuToPay)
-                Log.d("확인 MenuFragment -> BookTime.callPayPage()", "복귀")
 
 
             }

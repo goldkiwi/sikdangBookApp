@@ -1,5 +1,6 @@
 package com.example.myapplication.payPage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -8,6 +9,7 @@ import com.example.myapplication.R
 import com.example.myapplication.bookMenu.DataMenuToPay
 import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTime.BookData
+import com.example.myapplication.payComplete.PayCompletePage
 
 class PayPage: AppCompatActivity() {
     lateinit var dataMenuToPay:DataMenuToPay
@@ -98,6 +100,15 @@ class PayPage: AppCompatActivity() {
                 var isSuccess = kakaoPay.isPaySuccess()
                 if (isSuccess == true){
                     //결제 성공
+                    //결제 완료 정보 서버로 넘겨줘야한다
+                    //Log.d("확인 PayPage PayCompletePage 호출", "1")
+                    val intent= Intent(this, PayCompletePage::class.java)
+                    //Log.d("확인 PayPage PayCompletePage 호출", "2")
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //intent.putExtra("price", price)
+                    //intent.putExtra("dataMenuToPay", dataMenuToPay)
+                    startActivity(intent)
+
                 }else{
                     //결제 실패
                 }
