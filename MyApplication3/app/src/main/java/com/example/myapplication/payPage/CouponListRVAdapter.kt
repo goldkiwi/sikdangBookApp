@@ -55,7 +55,10 @@ class CouponListRVAdapter(var context:Context, val couponData: CouponData, var p
                 payPageCouponDialog.couponCBAL[pos] = couponCB
             }
             couponCB.setOnClickListener {
-
+                var isPosible:Boolean = payPageCouponDialog.checkCouponList(pos)
+                if (isPosible == false){
+                    couponCB.isChecked = false
+                }
             }
 
 

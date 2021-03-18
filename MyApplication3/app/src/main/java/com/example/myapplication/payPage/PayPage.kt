@@ -16,6 +16,8 @@ class PayPage: AppCompatActivity() {
     var price = 0
     var couponData = CouponData(1234)
     var checkBoxAL = ArrayList<CheckBox>()
+    private var discountPrice = 0
+    private var totalPrice = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,7 @@ class PayPage: AppCompatActivity() {
         else{
             Log.d("확인 PayPage", "intent 데이터 가져오기 오류")
         }
+        totalPrice = price
         var payPageSikdangName:TextView = findViewById(R.id.payPageSikdangName)
         payPageSikdangName.setText(dataMenuToPay.sikdangName)
 
@@ -130,8 +133,17 @@ class PayPage: AppCompatActivity() {
     }*/
 
     public fun showDialog(){
-        var customDialog = PayPageCouponDialog(this, couponData, dataMenuToPay.sikdangId)
+        var customDialog = PayPageCouponDialog(this, couponData, dataMenuToPay.sikdangId, price, this)
         customDialog.show()
+    }
+
+    public fun setDiscountPrice(disPrice:Int){//다이얼로그 꺼졌을때 호출된다.
+        discountPrice = disPrice
+        setTotalPrice()
+    }
+
+    private fun setTotalPrice(){
+        totalPrice = price - discountPrice
     }
 
 
