@@ -13,12 +13,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="800dp">
         <!--스크롤뷰 위에 다시 리니어 레이아웃 들어가 그 안에서 스크롤함-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <!--배너 스크롤뷰-->
 
@@ -44,7 +44,6 @@
                     android:layout_marginStart="0dp"
 
                     android:orientation="horizontal">
-
 
 
                 </LinearLayout>
@@ -115,17 +114,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
             <!--오늘 뭐먹지 버튼-->
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sikdang_cat_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/sikdang_cat_view"
-                ></androidx.recyclerview.widget.RecyclerView>
+                android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -148,19 +144,119 @@
 
             <!--먹고싶은 태그 선택지
             RecyclerView 로 접기 펼치기 가능하게 만듦-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_tagList"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_tagList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
 
 
-                />
+                    >
 
+                </androidx.recyclerview.widget.RecyclerView>
+                <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/icon_book_IV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/icon_dish" />
+
+                    <ImageView
+                        android:id="@+id/icon_search_IV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/icon_search" />
+
+                    <ImageView
+                        android:id="@+id/icon_home_IV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/icon_home" />
+
+                    <ImageView
+                        android:id="@+id/icon_bookMark_IV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/icon_bookmark" />
+
+                    <ImageView
+                        android:id="@+id/icon_my_IV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/icon_my" />
+                </LinearLayout>
+                -->
+
+            </LinearLayout>
 
 
         </LinearLayout>
     </ScrollView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_gravity="bottom"
+            >
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_dish" />
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_search" />
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_home" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_bookmark" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_my" />
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </LinearLayout>

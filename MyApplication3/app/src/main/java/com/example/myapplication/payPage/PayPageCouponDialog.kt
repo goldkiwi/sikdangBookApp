@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.CheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -12,6 +14,7 @@ import com.example.myapplication.bookTable.TableFloorFragment
 class PayPageCouponDialog(context: Context, val couponData:CouponData, val sikdangId:Int): Dialog(context) {
     public var couponMatchList = ArrayList<Boolean>()//각 쿠폰이 이 식당에 사용되는 쿠폰인지 확인, 어댑터에서 확인한다
     public var couponMatchNumList = ArrayList<Int>()//매치되는 쿠폰이 각각 몇번째인지 저장하는 ArrayList
+    public var couponCBAL = ArrayList<CheckBox>() // 리스트에 나오는 체크박스의 ArrayList
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +32,11 @@ class PayPageCouponDialog(context: Context, val couponData:CouponData, val sikda
         var couponListLM = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)//인원 버튼
         couponListRV.layoutManager=couponListLM
         couponListRV.setHasFixedSize(true)
+
+        var completeButton: Button = findViewById(R.id.couponSelectButton)
+        completeButton.setOnClickListener {
+
+        }
 
 
 

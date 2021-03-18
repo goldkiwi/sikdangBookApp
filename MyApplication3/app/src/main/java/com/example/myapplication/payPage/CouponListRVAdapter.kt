@@ -4,11 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
-class CouponListRVAdapter(var context:Context, val couponData: CouponData, val payPageCouponDialog: PayPageCouponDialog): RecyclerView.Adapter<CouponListRVAdapter.Holder>() {
+class CouponListRVAdapter(var context:Context, val couponData: CouponData, var payPageCouponDialog: PayPageCouponDialog): RecyclerView.Adapter<CouponListRVAdapter.Holder>() {
 
 
 
@@ -45,6 +46,17 @@ class CouponListRVAdapter(var context:Context, val couponData: CouponData, val p
 
             var couponEXPTV:TextView = itemView.findViewById(R.id.couponEXPTV)
             couponEXPTV.setText(couponData.couponList[payPageCouponDialog.couponMatchNumList[pos]].couponExp.toString()+"까지 사용 가능")
+
+            var couponCB:CheckBox = itemView.findViewById(R.id.couponCB)
+            if (pos >= payPageCouponDialog.couponCBAL.size){
+                payPageCouponDialog.couponCBAL.add(couponCB)
+            }
+            else{
+                payPageCouponDialog.couponCBAL[pos] = couponCB
+            }
+            couponCB.setOnClickListener {
+
+            }
 
 
         }
