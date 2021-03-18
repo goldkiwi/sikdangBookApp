@@ -3,14 +3,13 @@ package com.example.myapplication.payPage
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.bookTable.TableFloorFragment
+
 //쿠폰 정보 띄우는 다이얼로그
 class PayPageCouponDialog(context: Context, val couponData:CouponData, val sikdangId:Int, val originaPrice:Int, var payPage:PayPage): Dialog(context) {
     public var couponMatchList = ArrayList<Boolean>()//각 쿠폰이 이 식당에 사용되는 쿠폰인지 확인, 어댑터에서 확인한다
@@ -39,6 +38,19 @@ class PayPageCouponDialog(context: Context, val couponData:CouponData, val sikda
         completeButton.setOnClickListener {
             calDiscount()
             payPage.setDiscountPrice(discountPrice)
+
+            //액티비티에 사용하는 쿠폰 정보 보내줘야 함
+            var usedCouponNumList = ArrayList<Int>()
+            var i = 0
+            while (i<couponCBAL.size){
+                if (couponCBAL[i].isChecked){
+                    usedCouponNumList.add(couponMatchNumList[i])
+                }
+                i++
+            }
+            payPage.setUsedCouponRV(usedCouponNumList)
+
+
             this.dismiss()
 
         }

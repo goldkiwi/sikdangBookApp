@@ -29,6 +29,8 @@ class CouponListRVAdapter(var context:Context, val couponData: CouponData, var p
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         public fun bind(pos:Int){
+            var discountPriceTV:TextView = itemView.findViewById(R.id.discountPriceTV)
+            discountPriceTV.setText(couponData.couponList[payPageCouponDialog.couponMatchNumList[pos]].discountPrice.toString())
             var couponExplanationTV:TextView = itemView.findViewById(R.id.couponExplanationTV)
             couponExplanationTV.setText(couponData.couponList[payPageCouponDialog.couponMatchNumList[pos]].explanation)
             var minPriceTV:TextView = itemView.findViewById(R.id.minPriceTV)

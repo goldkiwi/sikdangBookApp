@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bookMenu.DataMenuToPay
+import com.example.myapplication.bookMenu.MenuListRVAdapter
+import com.example.myapplication.bookMenu.MenuTableRVAdapter
 import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTime.BookData
 import com.example.myapplication.payComplete.PayCompletePage
@@ -16,8 +20,13 @@ class PayPage: AppCompatActivity() {
     var price = 0
     var couponData = CouponData(1234)
     var checkBoxAL = ArrayList<CheckBox>()
+    var usedCouponNumAL = ArrayList<Int>()
     private var discountPrice = 0
     private var totalPrice = 0
+
+    lateinit var usedCouponRVAdapter: UsedCouponRVAdapter
+
+    lateinit var totalPriceTV:TextView 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +65,23 @@ class PayPage: AppCompatActivity() {
             showDialog()
         }
 
+        var usedCouponRV: RecyclerView = findViewById(R.id.usedCouponRV)
+        usedCouponRVAdapter = UsedCouponRVAdapter(this,  couponData, this)
+        usedCouponRV.adapter = usedCouponRVAdapter
+
+        var usedCouponLM = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)//인원 버튼
+        usedCouponRV.layoutManager=usedCouponLM
+        usedCouponRV.setHasFixedSize(true)
+
+        totalPriceTV = findViewById(R.id.totalPriceTV)
+        totalPriceTV.setText("총 가격 : "+totalPrice.toString()+"원")
 
 
 
+
+
+
+        //결제방식 선택 체크박스
         checkBoxAL.add(findViewById(R.id.kakaoPayCB))
         checkBoxAL.add(findViewById(R.id.secondPayCB))
 
@@ -144,6 +167,13 @@ class PayPage: AppCompatActivity() {
 
     private fun setTotalPrice(){
         totalPrice = price - discountPrice
+    }
+
+    public fun setUsedCouponRV(usedCouponNumAL_:ArrayList<Int>){
+        usedCouponNumAL = usedCouponNumAL_
+        Log.d("확인 다이얼로그 닫고 쿠폰 갯수", usedCouponNumAL.size.toString())
+        usedCouponRVAdapter.notifyDataSetChanged()
+        totalPriceTV.setText("총 가격 : "+totalPrice.toString()+"원")
     }
 
 

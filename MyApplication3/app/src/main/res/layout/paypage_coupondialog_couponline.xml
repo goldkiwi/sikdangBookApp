@@ -4,12 +4,33 @@
     android:layout_height="120dp"
     android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/couponCB"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="CheckBox" />
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/couponCB"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:text="쿠폰 사용" />
+
+        <TextView
+            android:id="@+id/discountPriceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="할인 가격" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="원 할인" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/couponExplanationTV"
